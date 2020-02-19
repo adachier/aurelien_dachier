@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Drone{% endblock %}
+
+{% block body %}
+    <h1>Create new Drone</h1>
+    <div class="container">
+
+    {{ include('drone/_form.html.twig') }}
+
+    <a href="{{ path('drone_index') }}" class="btn btn-dark">back to list</a>
+
+    </div>
+{% endblock %}

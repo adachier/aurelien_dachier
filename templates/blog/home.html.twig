@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les drônes{% endblock %}
+
+{% block body %}
+    <div class="jumbotron mt-4">
+        <h1>Les différents drônes</h1>
+    </div>
+    <div class="container">
+        <div class="row flex">
+            {% for drone in drones %}
+            <div class="col-6">
+                <div class="card m-4">
+                    <div class="card-body text-center">
+                    <img src="{{drone.image}}" alt=""></img>
+                    <a href="{{ path ('single_drone', {id:drone.id}) }}">{{drone.nom}}<a>
+                        <p class="card-text">{{drone.prix}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

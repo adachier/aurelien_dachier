@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Drone{% endblock %}
+
+{% block body %}
+    <h1>Drone</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ drone.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ drone.nom }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ drone.marque }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ drone.image }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ drone.prix }}</td>
+            </tr>
+            <tr>
+                <th>Autonomie</th>
+                <td>{{ drone.autonomie }}</td>
+            </tr>
+            <tr>
+                <th>Presentation</th>
+                <td>{{ drone.presentation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('drone_index') }}">back to list</a>
+
+    <a href="{{ path('drone_edit', {'id': drone.id}) }}">edit</a>
+
+    {{ include('drone/_delete_form.html.twig') }}
+{% endblock %}

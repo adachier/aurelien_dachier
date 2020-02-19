@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron mt-4">
+        <h1>{{drone.nom}}</h1>
+        <img src="{{drone.image}}" alt="">
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+            <tr>
+                <td>Marque</td>
+                <td>{{drone.marque}}</td>
+            </tr>
+            <tr>
+                <td>Autonomie</td>
+                <td>{{drone.autonomie}} min</td>
+            </tr>
+            <tr>
+                <td>Prix</td>
+                <td>{{drone.prix}} euros</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{drone.presentation}}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Drone index{% endblock %}
+
+{% block body %}
+    <h1 class="mt-4 mb-4">Drones index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Prix</th>
+                <th>Autonomie</th>
+                <th>Presentation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for drone in drones %}
+            <tr>
+                <td>{{ drone.id }}</td>
+                <td>{{ drone.nom }}</td>
+                <td>{{ drone.marque }}</td>
+                <td>{{ drone.prix }} euros</td>
+                <td>{{ drone.autonomie }} min</td>
+                <td>{{ drone.presentation }}</td>
+                <td>
+                    <a href="{{ path('drone_show', {'id': drone.id}) }}" class="btn btn-sm btn-success">show</a>
+                    <a href="{{ path('drone_edit', {'id': drone.id}) }}" class="btn btn-sm btn-info">edit</a>
+                    <form method="post" action="{{ path('drone_delete', {'id': drone.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ drone.id) }}">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('drone_new') }}" class="btn btn-warning">Create new</a>
+{% endblock %}
